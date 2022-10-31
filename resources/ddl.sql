@@ -5,13 +5,13 @@ CREATE TABLE Branch(
 );
 
 CREATE TABLE FacilitySize(
-    AreaSize CHAR(10) PRIMARY KEY,
+    AreaSize CHAR(15) PRIMARY KEY,
     Capacity INTEGER NOT NULL
 );
 
 CREATE TABLE Facility(
     ID CHAR(10) PRIMARY KEY,
-    AreaSize CHAR(10),
+    AreaSize CHAR(15),
     FOREIGN KEY (AreaSize) REFERENCES FacilitySize(AreaSize) ON DELETE
     SET NULL
 );
@@ -52,9 +52,9 @@ CREATE TABLE Member(
     Name CHAR(40),
     PhoneNumber CHAR(10),
     EmergencyContact CHAR(10) NOT NULL,
-    EndDate DATE NOT NULL,
     MembershipTier CHAR(15) NOT NULL,
     PersonalTrainerID INTEGER,
+    EndDate DATE NOT NULL,
     PRIMARY KEY(Name, PhoneNumber),
     FOREIGN KEY (MembershipTier) REFERENCES Membership(Tier) ON DELETE CASCADE,
     FOREIGN KEY (PersonalTrainerID) REFERENCES PersonalTrainer(IDNumber) ON DELETE
