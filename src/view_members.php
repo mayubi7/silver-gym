@@ -16,7 +16,7 @@
   extension.  You must also change the username and password on the
   OCILogon below to be your ORACLE username and password -->
 
-<html>
+  <html>
 
 <head>
     <title>Main Project Page</title>
@@ -74,7 +74,9 @@
     function handleDisplayAllMembersReq()
     {
 
-        $result = executePlainSQL("SELECT m.name, m.phonenumber, m.emergencycontact, m.membershiptier, m.personaltrainerid, s.name, m.enddate from member m, staffruns s where m.personaltrainerid=s.idnumber");
+        $result = executePlainSQL("(SELECT m.name, m.phonenumber, m.emergencycontact, m.membershiptier, m.personaltrainerid, s.name, m.enddate from member m, staffruns s where m.personaltrainerid=s.idnumber) 
+                                    UNION 
+                                    (SELECT name, phonenumber, emergencycontact, membershiptier, personaltrainerid, null as dummy, enddate from member where personaltrainerid is null)");
         echo "<table>";
         echo "<tr>
                 <th>Name</th>
