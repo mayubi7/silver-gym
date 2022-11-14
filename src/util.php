@@ -52,9 +52,10 @@ function executeBoundSQL($cmdstr, $list)
     }
 
     foreach ($list as $tuple) {
-        foreach ($tuple as $bind => $val) {
-            //echo $val;
-            //echo "<br>".$bind."<br>";
+        foreach ($tuple as $bind => &$val) {
+            
+            // echo $val;
+            // echo "<br>".$bind."<br>";
             OCIBindByName($statement, $bind, $val);
             unset($val); //make sure you do not remove this. Otherwise $val will remain in an array object wrapper which will not be recognized by Oracle as a proper datatype
         }
