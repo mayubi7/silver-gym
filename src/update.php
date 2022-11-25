@@ -16,7 +16,7 @@
   extension.  You must also change the username and password on the
   OCILogon below to be your ORACLE username and password -->
 
-  <html>
+<html>
 
 <head>
     <title>Main Project Page</title>
@@ -26,15 +26,19 @@
 </style>
 
 <body>
-    <?php include "navbar.php";?>
-    <h2>Fire staff</h2>
-    <form method="POST" action="remove_staff.php">
-        <input type="hidden" id="delQueryReq" name="delQueryReq">
-        ID: <input type="number" name="id"> <br /><br />
-        <input type="submit" value="delete" name="delete"></p>
+    <h2>Update Membership End Date and/or Tier</h2>
+    <p>The values are case sensitive and if you enter in the wrong case, the update statement will not do anything.</p>
+
+    <form method="POST" action="update.php">
+        <!--refresh page when submitted-->
+        <input type="hidden" id="updateQueryRequest" name="updateQueryRequest">
+        Name: <input type="text" name="name"> <br /><br />
+        Phone Number: <input type="text" name="phoneNumber"> <br /><br />
+        Membership Tier: <input type="text" name="membershipTier"> <br /><br />
+        End Date: <input type="date" name="endDate"> <br /><br />
+        <input type="submit" value="update" name="update"></p>
     </form>
 
-    <hr />
     <?php
     require "util.php";
     //this tells the system that it's no longer just parsing html; it's now parsing PHP
@@ -43,21 +47,23 @@
     $db_conn = NULL; // edit the login credentials in connectToDB()
     $show_debug_alert_messages = False; // set to True if you want alerts to show you which methods are being triggered (see how it is used in debugAlertMessage())
 
-
-    function handleDelReq()
+    function handleUpdateRequest()
     {
         global $db_conn;
 
-        //Getting the values from user and insert data into the table
-        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $membershipTier = $_POST['membershipTier'];
+        $endDate = date("d-M-y", strtotime($_POST['endDate']));
 
-        $result = executePlainSQL("delete from staffruns where idnumber=$id");
-
-        if (oci_num_rows($result) == 1) {
-            echo "<p>Success!</p>";
+        if (empty($membershipTier)) {
+            executePlainSQL("UPDATE member SET enddate='" . $endDate . "' WHERE name='" . $name . "' and phonenumber='" . $phoneNumber . "'");
         } else {
-            echo "<p>Was unable to remove staff with id $id. Make sure it's correct!</p>";
+            executePlainSQL("UPDATE member SET enddate='" . $endDate . "', membershipTier='". $membershipTier . "' WHERE name='" . $name . "' and phonenumber='" . $phoneNumber . "'");
         }
+
+        // you need the wrap the old name and new name values with single quotations
+
         OCICommit($db_conn);
     }
 
@@ -66,15 +72,15 @@
     function handlePOSTRequest()
     {
         if (connectToDB()) {
-            if (array_key_exists('delQueryReq', $_POST)) {
-                handleDelReq();
+            if (array_key_exists('updateQueryRequest', $_POST)) {
+                handleUpdateRequest();
             }
 
             disconnectFromDB();
         }
     }
 
-    if (isset($_POST['delete'])) {
+    if (isset($_POST['update'])) {
         handlePOSTRequest();
     }
 

@@ -41,13 +41,13 @@
 </style>
 
 <body>
-    <h2>Display members enrolled by class ID</h2>
-    <p>Press the button to see details</p>
+    <h2>Display max weight by lift type</h2>
+    <p>Find the max and avg weight for each lift type for which the average weight is higher than the average weight across all lift types</p>
 
-    <form method="GET" action="count_members_by_classID.php">
+    <form method="GET" action="nestedAggregation.php">
         <!--refresh page when submitted-->
-        <input type="hidden" id="displayMembersCountRequest" name="displayMembersCountRequest">
-        <input type="submit" name="displayMembersCount"></p>
+        <input type="hidden" id="displayMaxWeightRequest" name="displayMaxWeightRequest">
+        <input type="submit" name="displayMaxWeight"></p>
     </form>
 
     <?php
@@ -63,24 +63,27 @@
     function handleGETRequest()
     {
         if (connectToDB()) {
-            if (array_key_exists('displayMembersCount', $_GET)) {
-                handleDisplayBranchesReq();
+            if (array_key_exists('displayMaxWeight', $_GET)) {
+                handleDisplayMaxWeightReq();
             }
 
             disconnectFromDB();
         }
     }
 
-    function handleDisplayBranchesReq()
+    function handleDisplayMaxWeightReq()
     {
 
-        $result = executePlainSQL("SELECT ClassID, Count(*)
-        FROM Enrolled e
-        GROUP BY ClassID");
+        $result = executePlainSQL("SELECT pb.liftType, MAX(pb.weight), AVG(pb.weight)
+        FROM PersonalBest pb
+        GROUP BY pb.liftType
+        HAVING AVG(pb.weight) > (SELECT avg(pb2.weight)
+                                FROM PersonalBest pb2)");
         echo "<table>";
         echo "<tr>
-                <th>Class ID</th>
-                <th>Number of Members Enrolled</th>
+                <th>Lift Type</th>
+                <th>Max Weight Record</th>
+                <th>Avg Weight Record</th>
             </tr>";
         
         while (($row = oci_fetch_row($result)) != false) {
@@ -92,7 +95,7 @@
         }
     }
 
-    if (isset($_GET['displayMembersCount'])) {
+    if (isset($_GET['displayMaxWeight'])) {
         handleGETRequest();
     }
 

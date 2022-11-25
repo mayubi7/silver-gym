@@ -41,13 +41,14 @@
 </style>
 
 <body>
-    <h2>Display branches offering all facilities</h2>
-    <p>Press the button to see details</p>
+    <h2>Display count of equipment types</h2>
+    <p>For each equipment type the gym contains mulitple of, display count of rental equipment types greater than 2</p>
+    <p>Press the button below to display counts</p>
 
-    <form method="GET" action="branches_with_all_facilities.php">
+    <form method="GET" action="aggregationWithHaving.php">
         <!--refresh page when submitted-->
-        <input type="hidden" id="displayBranchesWithAllFacilitiesRequest" name="displayBranchesWithAllFacilitiesRequest">
-        <input type="submit" name="displayBranches"></p>
+        <input type="hidden" id="displayCountsGreaterThan2Request" name="displayCountsGreaterThan2Request">
+        <input type="submit" name="displayCounts"></p>
     </form>
 
     <?php
@@ -63,24 +64,26 @@
     function handleGETRequest()
     {
         if (connectToDB()) {
-            if (array_key_exists('displayBranches', $_GET)) {
-                handleDisplayBranchesReq();
+            if (array_key_exists('displayCounts', $_GET)) {
+                handleDisplayCountsReq();
             }
 
             disconnectFromDB();
         }
     }
 
-    function handleDisplayBranchesReq()
+    function handleDisplayCountsReq()
     {
 
-        $result = executePlainSQL("SELECT * FROM branch b WHERE NOT EXISTS
-        (SELECT f.id FROM facility f MINUS
-        SELECT l.facilityid FROM locatedin l WHERE l.branchcity = b.city AND l.branchstreetaddress = b.streetaddress)");
+        $result = executePlainSQL("SELECT b1.type, count(distinct b1.barcode)
+        FROM BorrowsRentalEquipment b1, BorrowsRentalEquipment b2
+        WHERE b1.barcode != b2.barcode and b1.type = b2.type
+        GROUP BY b1.type
+        HAVING COUNT(distinct b1.barcode)>2");
         echo "<table>";
         echo "<tr>
-                <th>Branch City</th>
-                <th>Branch Address</th>
+                <th>Rental Equipment Type</th>
+                <th>Number of distinct barcodes</th>
             </tr>";
         
         while (($row = oci_fetch_row($result)) != false) {
@@ -92,7 +95,7 @@
         }
     }
 
-    if (isset($_GET['displayBranches'])) {
+    if (isset($_GET['displayCounts'])) {
         handleGETRequest();
     }
 

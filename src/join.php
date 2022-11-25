@@ -31,7 +31,7 @@
     <h2>View available classes</h2>
     <p>Press the button to see information on all classes in any facility</p>
 
-    <form method="GET" action="view_classes_with_instructors.php">
+    <form method="GET" action="join.php">
         <!--refresh page when submitted-->
         <input type="hidden" id="displayClassesReq" name="displayClassesReq">
 <label for="facility-names">Located in Facility:</label>
