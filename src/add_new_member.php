@@ -26,6 +26,7 @@
 </style>
 
 <body>
+    <?php include "navbar.php";?>
     <h2>Add new member</h2>
     <form method="POST" action="add_new_member.php">
         <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">

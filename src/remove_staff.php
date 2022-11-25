@@ -26,6 +26,7 @@
 </style>
 
 <body>
+    <?php include "navbar.php";?>
     <h2>Fire staff</h2>
     <form method="POST" action="remove_staff.php">
         <input type="hidden" id="delQueryReq" name="delQueryReq">
