@@ -47,11 +47,19 @@ VALUES(5,DATE '2022-09-12',DATE '2022-09-17');
 INSERT INTO RentalEquipmentDue
 VALUES(14,DATE '2022-10-15',DATE '2022-10-29');
 INSERT INTO RentalEquipmentDue
+VALUES(5,DATE '2022-10-24',DATE '2022-10-29');
+INSERT INTO RentalEquipmentDue
 VALUES(5,DATE '2022-10-15',DATE '2022-10-20');
+INSERT INTO RentalEquipmentDue
+VALUES(10,DATE '2022-10-10',DATE '2022-10-20');
 INSERT INTO RentalEquipmentDue
 VALUES(7,DATE '2022-09-03',DATE '2022-09-10');
 INSERT INTO RentalEquipmentDue
 VALUES(5,DATE '2022-09-13',DATE '2022-09-18');
+INSERT INTO RentalEquipmentDue
+VALUES(8,DATE '2022-09-10',DATE '2022-09-18');
+INSERT INTO RentalEquipmentDue
+VALUES(15,DATE '2022-09-03',DATE '2022-09-18');
 
 INSERT INTO StaffRuns
 VALUES(
@@ -203,15 +211,42 @@ VALUES(
     );
 
 INSERT INTO LocatedIn
-VALUES('YOGSTD','Burnaby','1673 Macdonald St.');
-INSERT INTO LocatedIn
 VALUES('POOL','Coquitlam','4474 Maple Ave.');
 INSERT INTO LocatedIn
-VALUES('BOXRNG','Vancouver','13 Main St.');
+VALUES('YOGSTD','Coquitlam','4474 Maple Ave.');
+INSERT INTO LocatedIn
+VALUES('BOXRNG','Coquitlam','4474 Maple Ave.');
+INSERT INTO LocatedIn
+VALUES('GYM','Coquitlam','4474 Maple Ave.');
+INSERT INTO LocatedIn
+VALUES('RUNTRK','Coquitlam','4474 Maple Ave.');
+
 INSERT INTO LocatedIn
 VALUES('GYM','Vancouver','994 Marine Dr.');
 INSERT INTO LocatedIn
 VALUES('BOXRNG','Toronto','924 Joust St.');
+
+INSERT INTO LocatedIn
+VALUES('POOL','Vancouver','13 Main St.');
+INSERT INTO LocatedIn
+VALUES('YOGSTD','Vancouver','13 Main St.');
+INSERT INTO LocatedIn
+VALUES('BOXRNG','Vancouver','13 Main St.');
+INSERT INTO LocatedIn
+VALUES('GYM','Vancouver','13 Main St.');
+INSERT INTO LocatedIn
+VALUES('RUNTRK','Vancouver','13 Main St.');
+
+INSERT INTO LocatedIn
+VALUES('YOGSTD','Burnaby','1673 Macdonald St.');
+INSERT INTO LocatedIn
+VALUES('POOL','Burnaby','1673 Macdonald St.');
+INSERT INTO LocatedIn
+VALUES('BOXRNG','Burnaby','1673 Macdonald St.');
+INSERT INTO LocatedIn
+VALUES('GYM','Burnaby','1673 Macdonald St.');
+INSERT INTO LocatedIn
+VALUES('RUNTRK','Burnaby','1673 Macdonald St.');
 
 INSERT INTO Class
 VALUES(1,'Yoga for Seniors','YOGSTD');
@@ -234,6 +269,12 @@ INSERT INTO Enrolled
 VALUES('Captain Canada','2352', 4);
 INSERT INTO Enrolled
 VALUES('Iron Dog','54252424', 5);
+INSERT INTO Enrolled
+VALUES('Bucky','12355', 1);
+INSERT INTO Enrolled
+VALUES('Captain Canada','2352', 5);
+INSERT INTO Enrolled
+VALUES('Terminator','1234555', 4);
 
 INSERT INTO BorrowsRentalEquipment
 VALUES(
@@ -279,6 +320,69 @@ VALUES(
        '5152424',
         5,
        DATE '2022-09-13'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11116,
+       'boxing gloves',
+       'Iron Dog',
+       '54252424',
+        8,
+       DATE '2022-09-10'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11117,
+       'yoga mat',
+       'Captain Canada',
+       '2352',
+        15,
+       DATE '2022-09-03'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11118,
+       'boxing gloves',
+       'Captain Canada',
+       '2352',
+        10,
+       DATE '2022-10-10'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11119,
+       '30lbs dumbbells',
+       'Guy Fiery',
+       '5152424',
+        5,
+       DATE '2022-10-24'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11110,
+       '30lbs dumbbells',
+       'Guy Fiery',
+       '5152424',
+        5,
+       DATE '2022-09-12'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11124,
+       'yoga mat',
+       'Guy Fiery',
+       '5152424',
+        7,
+       DATE '2022-09-03'
+    );
+INSERT INTO BorrowsRentalEquipment
+VALUES(
+        11122,
+       'jump rope',
+       'Guy Fiery',
+       '5152424',
+        14,
+       DATE '2022-10-15'
     );
 
 INSERT INTO TEACH
@@ -327,6 +431,54 @@ VALUES(
        DATE '2022-12-10',
        'Front Squat',
         205
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Guy Fiery',
+       '5152424',
+       DATE '2022-12-15',
+       'Squat',
+        385
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Iron Dog',
+       '54252424',
+       DATE '2021-12-15',
+       'Dead Lift',
+        485
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Iron Dog',
+       '54252424',
+       DATE '2021-12-15',
+       'Squat',
+        375
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Iron Dog',
+       '54252424',
+       DATE '2021-12-15',
+       'Front Squat',
+        275
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Iron Dog',
+       '54252424',
+       DATE '2021-12-15',
+       'Power Clean',
+        225
+    );
+INSERT INTO PersonalBest
+VALUES(
+       'Terminator',
+       '1234555',
+       DATE '2022-12-20',
+       'Squat',
+        400
     );
 
 INSERT INTO Accesses
