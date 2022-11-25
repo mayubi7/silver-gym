@@ -41,13 +41,13 @@
 </style>
 
 <body>
-    <h2>Display max weight by lift type</h2>
-    <p>Find the max and avg weight for each lift type for which the average weight is higher than the average weight across all lift types</p>
+    <h2>Display branches offering all facilities</h2>
+    <p>Press the button to see details</p>
 
-    <form method="GET" action="max_weight_greater_than_avg.php">
+    <form method="GET" action="division.php">
         <!--refresh page when submitted-->
-        <input type="hidden" id="displayMaxWeightRequest" name="displayMaxWeightRequest">
-        <input type="submit" name="displayMaxWeight"></p>
+        <input type="hidden" id="displayBranchesWithAllFacilitiesRequest" name="displayBranchesWithAllFacilitiesRequest">
+        <input type="submit" name="displayBranches"></p>
     </form>
 
     <?php
@@ -63,27 +63,24 @@
     function handleGETRequest()
     {
         if (connectToDB()) {
-            if (array_key_exists('displayMaxWeight', $_GET)) {
-                handleDisplayMaxWeightReq();
+            if (array_key_exists('displayBranches', $_GET)) {
+                handleDisplayBranchesReq();
             }
 
             disconnectFromDB();
         }
     }
 
-    function handleDisplayMaxWeightReq()
+    function handleDisplayBranchesReq()
     {
 
-        $result = executePlainSQL("SELECT pb.liftType, MAX(pb.weight), AVG(pb.weight)
-        FROM PersonalBest pb
-        GROUP BY pb.liftType
-        HAVING AVG(pb.weight) > (SELECT avg(pb2.weight)
-                                FROM PersonalBest pb2)");
+        $result = executePlainSQL("SELECT * FROM branch b WHERE NOT EXISTS
+        (SELECT f.id FROM facility f MINUS
+        SELECT l.facilityid FROM locatedin l WHERE l.branchcity = b.city AND l.branchstreetaddress = b.streetaddress)");
         echo "<table>";
         echo "<tr>
-                <th>Lift Type</th>
-                <th>Max Weight Record</th>
-                <th>Avg Weight Record</th>
+                <th>Branch City</th>
+                <th>Branch Address</th>
             </tr>";
         
         while (($row = oci_fetch_row($result)) != false) {
@@ -95,7 +92,7 @@
         }
     }
 
-    if (isset($_GET['displayMaxWeight'])) {
+    if (isset($_GET['displayBranches'])) {
         handleGETRequest();
     }
 

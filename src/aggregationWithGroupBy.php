@@ -41,14 +41,13 @@
 </style>
 
 <body>
-    <h2>Display count of equipment types</h2>
-    <p>For each equipment type the gym contains mulitple of, display count of rental equipment types greater than 2</p>
-    <p>Press the button below to display counts</p>
+    <h2>Display members enrolled by class ID</h2>
+    <p>Press the button to see details</p>
 
-    <form method="GET" action="count_by_types.php">
+    <form method="GET" action="aggregationWithGroupBy.php">
         <!--refresh page when submitted-->
-        <input type="hidden" id="displayCountsGreaterThan2Request" name="displayCountsGreaterThan2Request">
-        <input type="submit" name="displayCounts"></p>
+        <input type="hidden" id="displayMembersCountRequest" name="displayMembersCountRequest">
+        <input type="submit" name="displayMembersCount"></p>
     </form>
 
     <?php
@@ -64,26 +63,24 @@
     function handleGETRequest()
     {
         if (connectToDB()) {
-            if (array_key_exists('displayCounts', $_GET)) {
-                handleDisplayCountsReq();
+            if (array_key_exists('displayMembersCount', $_GET)) {
+                handleDisplayBranchesReq();
             }
 
             disconnectFromDB();
         }
     }
 
-    function handleDisplayCountsReq()
+    function handleDisplayBranchesReq()
     {
 
-        $result = executePlainSQL("SELECT b1.type, count(distinct b1.barcode)
-        FROM BorrowsRentalEquipment b1, BorrowsRentalEquipment b2
-        WHERE b1.barcode != b2.barcode and b1.type = b2.type
-        GROUP BY b1.type
-        HAVING COUNT(distinct b1.barcode)>2");
+        $result = executePlainSQL("SELECT ClassID, Count(*)
+        FROM Enrolled e
+        GROUP BY ClassID");
         echo "<table>";
         echo "<tr>
-                <th>Rental Equipment Type</th>
-                <th>Number of distinct barcodes</th>
+                <th>Class ID</th>
+                <th>Number of Members Enrolled</th>
             </tr>";
         
         while (($row = oci_fetch_row($result)) != false) {
@@ -95,7 +92,7 @@
         }
     }
 
-    if (isset($_GET['displayCounts'])) {
+    if (isset($_GET['displayMembersCount'])) {
         handleGETRequest();
     }
 
