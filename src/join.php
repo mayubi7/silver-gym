@@ -28,6 +28,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>View available classes</h2>
     <p>Press the button to see information on all classes in any facility</p>
 

@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display all tables</h2>
     <p>Press the button to see all of the tables available in the project</p>
 

@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display all members under personal trainer</h2>
     <p>Press the button to see all of the members for a specific personal trainer</p>
 

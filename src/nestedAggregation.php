@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display max weight by lift type</h2>
     <p>Find the max and avg weight for each lift type for which the average weight is higher than the average weight across all lift types</p>
 

@@ -73,11 +73,16 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <gymTitle>SILVER'S GYM</gymTitle>
     <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59828/dumbbell-weights-clipart-xl.png" alt="Gym logo" width="200" height="100">
-    <a href="https://www.students.cs.ubc.ca/~akim2602/add_new_member.php">Add Gym Member (INSERT)</a>
-    <a href="https://www.students.cs.ubc.ca/~akim2602/remove_staff.php">Remove Staff Member (DELETE)</a>
-    <a href="#">Pg3</a>
-    <a href="#">Pg4</a>
-    <a href="#">Pg5</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/insert.php">Add Gym Member</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/delete.php">Fire Staff Member</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/update.php">Update Membership</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/select.php">Custom Select</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/project.php">View Tables</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/join.php">Class Info</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/aggregationWithGroupBy.php">Class Enrollments</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/aggregationWithHaving.php">Rental Equipment Types</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/nestedAggregation.php">Lifting Records</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/division.php">Fully-Equipped Branches</a>
 </div>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
 

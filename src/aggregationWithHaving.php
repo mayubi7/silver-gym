@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display count of equipment types</h2>
     <p>For each equipment type the gym contains mulitple of, display count of rental equipment types greater than 2</p>
     <p>Press the button below to display counts</p>

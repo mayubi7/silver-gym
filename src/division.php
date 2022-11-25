@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display branches offering all facilities</h2>
     <p>Press the button to see details</p>
 

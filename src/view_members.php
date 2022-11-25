@@ -41,6 +41,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Display all members</h2>
     <p>Press the button to see all of the registered members</p>
 

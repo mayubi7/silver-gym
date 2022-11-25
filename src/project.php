@@ -57,7 +57,7 @@
     }
 
     ?>
-
+    <?php include "navbar.php";?>
     <h2>Custome select</h2>
     <p>Choose the table to view data from</p>
 
