@@ -58,7 +58,9 @@
 
     ?>
 
+    <?php include "navbar.php";?>
     <h2>Custom Project</h2>
+
     <p>Choose the table to view data from</p>
 
     <form method="GET" action="project.php">

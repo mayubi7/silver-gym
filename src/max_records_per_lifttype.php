@@ -28,6 +28,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Gym Records</h2>
     <p>Press the button to see the max weights of each lift type recorded at our gym</p>
 

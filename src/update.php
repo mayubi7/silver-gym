@@ -26,6 +26,7 @@
 </style>
 
 <body>
+<?php include "navbar.php";?>
     <h2>Update Membership End Date and/or Tier</h2>
     <p>The values are case sensitive and if you enter in the wrong case, the update statement will not do anything.</p>
 
