@@ -57,8 +57,10 @@
     }
 
     ?>
+
     <?php include "navbar.php";?>
-    <h2>Custome select</h2>
+    <h2>Custom Project</h2>
+
     <p>Choose the table to view data from</p>
 
     <form method="GET" action="project.php">
@@ -90,32 +92,6 @@
                 handleProject();
             }
             disconnectFromDB();
-        }
-    }
-    // select column_name from user_tab_cols where table_name='MEMBER';
-
-    function handleDisplayAllMembersReq()
-    {
-
-        $result = executePlainSQL("(SELECT m.name, m.phonenumber, m.emergencycontact, m.membershiptier, m.personaltrainerid, s.name, m.enddate from member m, staffruns s where m.personaltrainerid=s.idnumber) 
-                                    UNION 
-                                    (SELECT name, phonenumber, emergencycontact, membershiptier, personaltrainerid, null as dummy, enddate from member where personaltrainerid is null)");
-        echo "<table>";
-        echo "<tr>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Emergency Contact</th>
-                <th>Membership Tier</th>
-                <th>Personal Trainer ID</th>
-                <th>Personal Trainer Name</th>
-                <th>End Date</th>
-            </tr>";
-        while (($row = oci_fetch_row($result)) != false) {
-            echo "<tr>";
-            foreach ($row as $val) {
-                echo "<td> $val </td>";
-            }
-            echo "</tr>";
         }
     }
 
