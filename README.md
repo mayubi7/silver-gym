@@ -19,5 +19,9 @@ Welcome to Silver's Gym. We make YOUR fitness OUR priority.
 ## SQL data resources can be found in:
 [final.sql](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/resources/final.sql)
 
+## Additional Code Used
+- [navbar.php](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/src/navbar.php)
+- [delete.sql](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/resources/delete.sql)
+
 ## ER Diagram
 ![ER Diagram](milestone_docs/Gym-ER-Diagram-Normalized.drawio.png)
