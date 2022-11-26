@@ -4,6 +4,8 @@ Welcome to Silver's Gym. We make YOUR fitness OUR priority.
 
 ✨Click [here](https://www.students.cs.ubc.ca/~amluna/insert.php) to view the first page of our GUI!✨
 
+[Milestone 4.pdf](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/Milestone%204.pdf)
+
 ## Files With Queries:
 - [insert.php](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/src/insert.php)
 - [update.php](https://github.students.cs.ubc.ca/CPSC304-2022W-T1/project_e0u4g_s7w2b_y5t2b/blob/master/src/update.php)
