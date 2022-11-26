@@ -77,7 +77,7 @@
     <a href="https://www.students.cs.ubc.ca/~amluna/delete.php">Fire Staff Member</a>
     <a href="https://www.students.cs.ubc.ca/~amluna/update.php">Update Membership</a>
     <a href="https://www.students.cs.ubc.ca/~amluna/select.php">Custom Select</a>
-    <a href="https://www.students.cs.ubc.ca/~amluna/project.php">View Tables</a>
+    <a href="https://www.students.cs.ubc.ca/~amluna/project.php">Custom Projection</a>
     <a href="https://www.students.cs.ubc.ca/~amluna/join.php">Class Info</a>
     <a href="https://www.students.cs.ubc.ca/~amluna/aggregationWithGroupBy.php">Class Enrollments</a>
     <a href="https://www.students.cs.ubc.ca/~amluna/aggregationWithHaving.php">Rental Equipment Types</a>
